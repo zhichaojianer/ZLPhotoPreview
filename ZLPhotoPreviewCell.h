@@ -15,5 +15,6 @@ typedef void(^ZLSingleTapGestureBlock)();
 @property (nonatomic, copy) ZLSingleTapGestureBlock zlSingleTapGestureBlock;
 
 - (void)configImageViewWithPath:(NSString *)zlImageViewPath;
+- (void)configImageViewWithImage:(UIImage *) image;
 
 @end

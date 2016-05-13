@@ -10,7 +10,7 @@
 
 @interface ZLPhotoPreviewController : UIViewController
 
-@property (nonatomic, strong) NSArray  *zlPhotoArray; //保存图片路径的数组
+@property (nonatomic, strong) NSArray  *zlPhotoArray; //保存图片路径或图片的数组
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @end

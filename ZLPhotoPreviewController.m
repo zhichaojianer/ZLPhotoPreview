@@ -152,7 +152,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ZLPhotoPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ZLPhotoPreviewCell" forIndexPath:indexPath];
-    [cell configImageViewWithPath:self.zlPhotoArray[indexPath.row]];
+    if ([self.zlPhotoArray[indexPath.row] isKindOfClass:[UIImage class]]) {
+        [cell configImageViewWithImage:self.zlPhotoArray[indexPath.row]];
+    }else {
+        [cell configImageViewWithPath:self.zlPhotoArray[indexPath.row]];
+    }
     
     __block BOOL _weakIsHideNavBarView = self.isHideNavBarView;
     __weak typeof(self.ui_customNavBarView) weakNavBarView = self.ui_customNavBarView;

@@ -80,6 +80,17 @@
     }];
 }
 
+- (void)configImageViewWithImage:(UIImage *) image {
+
+    [self.zlActivityView startAnimating];
+    [self.zlScrollView setZoomScale:1.0 animated:NO];
+    
+    [self.zlImageView setImage:image];
+    
+    [self resizeSubviews];
+    [self.zlActivityView removeFromSuperview];
+}
+
 - (void)resizeSubviews {
     self.zlImageContainerView.tz_origin = CGPointZero;
     self.zlImageContainerView.tz_width = self.tz_width;

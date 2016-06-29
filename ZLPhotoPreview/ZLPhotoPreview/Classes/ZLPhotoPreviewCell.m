@@ -8,6 +8,7 @@
 
 #import "ZLPhotoPreviewCell.h"
 #import "UIView+Layout.h"
+#import "YYWebImage.h"
 
 @interface ZLPhotoPreviewCell ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 
@@ -73,8 +74,8 @@
     [self.zlActivityView startAnimating];
     [self.zlScrollView setZoomScale:1.0 animated:NO];
     
-    WEAKSELF_SC
-    [self.zlImageView setImageWithURL:[NSURL URLWithString:zlImageViewPath] placeholder:nil options:0 completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+    __weak __typeof(&*self)weakSelf_SC = self;
+    [self.zlImageView yy_setImageWithURL:[NSURL URLWithString:zlImageViewPath] placeholder:nil options:0 completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         [weakSelf_SC resizeSubviews];
         [weakSelf_SC.zlActivityView removeFromSuperview];
     }];

@@ -33,7 +33,6 @@
     
     [self configCollectionView];
     [self configCustomNavBarView];
-    [self configCustomToolBarView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,16 +58,15 @@
     
     self.ui_customNavBarView = [[UIView alloc] init];
     [self.ui_customNavBarView setFrame:CGRectMake(0, 0, self.view.tz_width, 64)];
-    [self.ui_customNavBarView setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:1.0]];
-    [self.ui_customNavBarView setAlpha:0.5];
+    [self.ui_customNavBarView setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:0.3]];
+    [self.ui_customNavBarView setAlpha:1.0];
     
-    self.ui_backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 44, 44)];
-    [self.ui_backButton setImage:[UIImage imageNamed:@"navi_back"] forState:UIControlStateNormal];
+    self.ui_backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 44, 44)];
+    [self.ui_backButton setImage:[UIImage imageNamedFromAssets:@"zl_nav_back_image"] forState:UIControlStateNormal];
     [self.ui_backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.ui_backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     
-    self.ui_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 20, self.view.tz_width-80*2, 24)];
-    [self.ui_titleLabel setCenter:self.ui_customNavBarView.center];
+    self.ui_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 30, self.view.tz_width-80*2, 24)];
     [self.ui_titleLabel setText:[NSString stringWithFormat:@"%ld/%lu", (long)_currentIndex+1, (unsigned long)self.zlPhotoArray.count]];
     [self.ui_titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self.ui_titleLabel setTextColor:[UIColor whiteColor]];
@@ -80,35 +78,12 @@
     [self.view addSubview:self.ui_customNavBarView];
 }
 
-- (void)configCustomToolBarView {
-    
-    self.ui_customToolBarView = [[UIView alloc] init];
-    [self.ui_customToolBarView setFrame:CGRectMake(0, self.view.tz_height - 44, self.view.tz_width, 44)];
-    [self.ui_customToolBarView setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:1.0]];
-    [self.ui_customToolBarView setAlpha:0.5];
-    
-    self.ui_collectionButton = [[UIButton alloc] init];
-    [self.ui_collectionButton setFrame:CGRectMake(0, 0, self.view.tz_width/2, 44)];
-    [self.ui_collectionButton setTitle:NSLocalizedString(@"宝贝点滴", nil) forState:UIControlStateNormal];
-    [self.ui_collectionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.ui_collectionButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [self.ui_customToolBarView addSubview:self.ui_collectionButton];
-    
-    self.ui_savedLocalButton = [[UIButton alloc] init];
-    [self.ui_savedLocalButton setFrame:CGRectMake(self.view.tz_width/2, 0, self.view.tz_width/2, 44)];
-    [self.ui_savedLocalButton setTitle:NSLocalizedString(@"保存到本地", nil) forState:UIControlStateNormal];
-    [self.ui_savedLocalButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.ui_savedLocalButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [self.ui_customToolBarView addSubview:self.ui_savedLocalButton];
-    
-    [self.view addSubview:self.ui_customToolBarView];
-}
 
 - (void)configCollectionView {
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection             = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize                    = CGSizeMake(self.view.tz_width, self.view.tz_height-20);
+    layout.itemSize                    = CGSizeMake(self.view.tz_width, self.view.tz_height);
     layout.minimumInteritemSpacing     = 0;
     layout.minimumLineSpacing          = 0;
     
@@ -133,6 +108,8 @@
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -172,6 +149,16 @@
     }
     
     return cell;
+}
+
+@end
+
+@implementation UIImage (Assets)
+
++ (UIImage *)imageNamedFromAssets:(NSString *)name {
+    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ZLPhotoPreview.bundle"];
+    NSString *imagePath = [bundlePath stringByAppendingPathComponent:name];
+    return [UIImage imageWithContentsOfFile:imagePath];
 }
 
 @end

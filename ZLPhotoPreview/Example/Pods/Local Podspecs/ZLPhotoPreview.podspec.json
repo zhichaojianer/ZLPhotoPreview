@@ -1,0 +1,22 @@
+{
+  "name": "ZLPhotoPreview",
+  "version": "0.1.0",
+  "summary": "A short description of ZLPhotoPreview.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/ZLPhotoPreview",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liuchao": "liuchao@imzhiliao.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/ZLPhotoPreview.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ZLPhotoPreview/Classes/**/*"
+}

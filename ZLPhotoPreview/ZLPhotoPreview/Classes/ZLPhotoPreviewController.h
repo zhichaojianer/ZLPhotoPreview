@@ -14,3 +14,9 @@
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @end
+
+@interface UIImage (Assets)
+
++ (UIImage *)imageNamedFromAssets:(NSString *)name;
+
+@end

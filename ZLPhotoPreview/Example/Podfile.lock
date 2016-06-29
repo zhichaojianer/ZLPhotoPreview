@@ -1,0 +1,16 @@
+PODS:
+  - ZLPhotoPreview (0.1.0)
+
+DEPENDENCIES:
+  - ZLPhotoPreview (from `../`)
+
+EXTERNAL SOURCES:
+  ZLPhotoPreview:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ZLPhotoPreview: c5e962c79d8be0f32524d3c902fe867929181756
+
+PODFILE CHECKSUM: 979306c7e8933f2ec85cefc3b8510e80306c4769
+
+COCOAPODS: 1.0.1

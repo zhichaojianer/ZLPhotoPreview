@@ -1,0 +1,6 @@
+use_frameworks!
+target 'ZLPhotoPreview_Tests' do
+  pod 'ZLPhotoPreview', :path => '../'
+  
+  
+end
